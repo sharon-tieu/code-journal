@@ -29,14 +29,14 @@
     </div>
   </header>
   <main class="bg-grey">
-    <div class="container">
-      <div class="row">
-        <div class="column-full">
-          <h1>New Entry</h1>
+    <div data-view="entry-form" class="hidden">
+      <div class="container">
+        <div class="row">
+          <div class="column-full">
+            <h1>New Entry</h1>
+          </div>
         </div>
-      </div>
-      <form class="entry-form">
-        <div data-view="entry-form">
+        <form class="entry-form">
           <div class="row">
             <div class="column-half">
               <img src="./images/placeholder-image-square.jpg" alt="place-holder" id="img-placeholder">
@@ -65,12 +65,48 @@
                 <textarea required id="notes" name="notes" class="textbox position click-border-change"></textarea>
               </div>
               <div class="align-right">
-                <button id="save-button">Save</button>
+                <button class="button">SAVE</button>
               </div>
             </div>
           </div>
+        </form>
+      </div>
+    </div>
+    <div data-view="entries">
+      <div class="container">
+        <div class="row">
+          <div class="column-full display-flex justify-content">
+            <h1>Entries</h1>
+            <button class="button" id="button-new">NEW</button>
+          </div>
         </div>
-      </form>
+        <div class="row center hidden">
+          <p>No entries have been saved.</p>
+        </div>
+        <ul>
+          <li class="row">
+            <div class="column-half">
+              <img src="/images/github-ada-lovelace.webp">
+            </div>
+            <div class="column-half">
+              <h3>Entry 1</h3>
+              <p>This is a dummy journal entry no.1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </p>
+            </div>
+          </li>
+          <li class="row">
+            <div class="column-half center">
+              <img src="/images/github-ada-lovelace.webp">
+            </div>
+            <div class="column-half">
+              <h3>Entry 2</h3>
+              <p>This is a dummy journal entry no.2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>

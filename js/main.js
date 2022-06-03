@@ -42,3 +42,14 @@ var previousData = localStorage.getItem('javascript-local-storage');
 if (previousData !== null) {
   data.parse(previousData);
 }
+
+var domTree = function userEntry(entry) {
+  var liElement = document.createElement('li');
+  liElement.setAttribute('class', 'row');
+  liElement.setAttribute('class', 'padding-bottom');
+  var divElement = document.createElement('div');
+  divElement.setAttribute('class', 'column-half');
+  var imgElement = document.createElement('img');
+  imgElement.setAttribute('src', $photoUrl.value);
+  divElement.appendChild('imgElement');
+};
