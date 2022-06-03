@@ -43,13 +43,36 @@ if (previousData !== null) {
   data.parse(previousData);
 }
 
+// create a DOM tree for our html sample journal entry
 var domTree = function userEntry(entry) {
   var liElement = document.createElement('li');
   liElement.setAttribute('class', 'row');
-  liElement.setAttribute('class', 'padding-bottom');
+
   var divElement = document.createElement('div');
   divElement.setAttribute('class', 'column-half');
+  liElement.appendChild(divElement);
+
   var imgElement = document.createElement('img');
   imgElement.setAttribute('src', $photoUrl.value);
-  divElement.appendChild('imgElement');
+  divElement.appendChild(imgElement);
+
+  var divTwoElement = document.createElement('div');
+  divTwoElement.setAttribute('class', 'column-half');
+
+  var hThree = document.createElement('h3');
+  var pContent = document.createElement('p');
+  pContent.textContent = notes.value;
+  hThree.appendChild(pContent);
+
+  return liElement;
 };
+
+var ulElement = document.querySelector('ul');
+for (var i = 0; i < data.length; i++) {
+  var accessEntry = domTree(data[i]);
+  ulElement.append(accessEntry);
+}
+
+document.addEventListener('DOMContentLoaded', entry => {
+  console.log('DOM fully loaded and parsed!:', domTree);
+});
