@@ -8,10 +8,9 @@ var data = {
 };
 
 window.addEventListener('beforeunload', function (event) {
-  var stringData = JSON.stringify(data);
-  localStorage.setItem('New data', stringData);
+  const entries = localStorage.getItem('JavaScriptLocalStorage');
+  data = { ...data, entries: JSON.parse(entries) };
+  localStorage.setItem('JavaScriptLocalStorage', entries);
 });
-var previousData = localStorage.getItem('javascript-local-storage');
-if (previousData !== null) {
-  data.parse(previousData);
-}
+
+// if view = entry form then render html
