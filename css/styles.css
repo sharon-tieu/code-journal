@@ -24,8 +24,8 @@
 }
 
 img {
-  width: 450px;
-  height: 400px;
+  width: 250px;
+  height: 300px;
 }
 
 .textbox {
@@ -93,4 +93,13 @@ label {
 
 .padding-bottom {
   padding-bottom: 20px;
+}
+
+.vertical-align {
+  align-items: center;
+}
+
+.entries-navbar {
+  padding: 20px;
+  text-decoration: none;
 }

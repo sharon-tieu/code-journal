@@ -22,14 +22,15 @@
   <header class="bg-purple">
     <div class="container">
       <div class="row white-text">
-        <div class="column-half">
+        <div class="column-half display-flex">
           <h3>Code Journal</h3>
+          <a href="#entries" class="white-text display-flex vertical-align entries-navbar">Entries</a>
         </div>
       </div>
     </div>
   </header>
   <main class="bg-grey">
-    <div data-view="entry-form">
+    <div data-view="entry-form" class="entry-form-feature">
       <div class="container">
         <div class="row">
           <div class="column-full">
@@ -72,16 +73,20 @@
         </form>
       </div>
     </div>
-    <div data-view="entries">
+
+
+
+    <!-- User can view Entries-->
+    <div data-view="entries" id="view-entries" class="hidden entry-view">
       <div class="container">
         <div class="row">
           <div class="column-full display-flex justify-content">
             <h1>Entries</h1>
-            <button class="button" id="button-new">NEW</button>
+            <button class="button new-entry-button" id="button-new">NEW</button>
           </div>
         </div>
-        <div class="row center hidden">
-          <p>No entries have been saved.</p>
+        <div class="row center">
+          <p class="no-entries">No entries have been saved.</p>
         </div>
         <!-- Dummy Entries-->
         <div id="dummy-journal-entry">

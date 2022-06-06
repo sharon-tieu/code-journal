@@ -7,10 +7,10 @@ var data = {
   nextEntryId: 1
 };
 
+// upon refreshing the page:
 window.addEventListener('beforeunload', function (event) {
   const entries = localStorage.getItem('JavaScriptLocalStorage');
-  data = { ...data, entries: JSON.parse(entries) };
+  data = JSON.parse(entries);
   localStorage.setItem('JavaScriptLocalStorage', entries);
+  localStorage.setItem('ThisSucks', JSON.stringify({ dog: 'corgi' }));
 });
-
-// if view = entry form then render html
