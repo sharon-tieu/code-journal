@@ -7,9 +7,12 @@ var data = {
   nextEntryId: 1
 };
 
-// upon refreshing the page:
 window.addEventListener('beforeunload', function (event) {
-  const entries = localStorage.getItem('JavaScriptLocalStorage');
-  data = JSON.parse(entries);
-  localStorage.setItem('JavaScriptLocalStorage', entries);
+  var entriesArray = JSON.stringify(data.entries);
+  this.localStorage.setItem('code-journal-data', entriesArray);
 });
+
+var previousJournalEntries = localStorage.getItem('code-journal-data');
+if (previousJournalEntries !== null) {
+  data = JSON.parse;
+}
