@@ -28,7 +28,6 @@ function newEntry(event) {
     photoURL,
     notes
   };
-  entryLists.prepend(userEntry(entryData));
   data.nextEntryId++; // incrementing
   imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
   entryForm.reset(); // resets the entryForm once user clicks SAVE button
