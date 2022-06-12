@@ -24,11 +24,10 @@ function newEntry(event) {
   var photoURL = document.querySelector('.photo').value;
   var notes = document.querySelector('.textbox').value;
   var entryData = {
-    title: entryForm.elements.title.value,
-    photoURL: photoUrl.value,
-    notes: entryForm.elements.notes.value
+    title,
+    photoURL,
+    notes
   };
-  data.entries.unshift(entryData); // adds an element to the beginning of an array and returns the new length of the array.
   entryLists.prepend(userEntry(entryData));
   data.nextEntryId++; // incrementing
   imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
