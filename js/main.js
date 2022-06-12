@@ -28,6 +28,7 @@ function newEntry(event) {
     photoURL,
     notes
   };
+  data.entries.unshift(entryData);
   data.nextEntryId++; // incrementing
   imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
   entryForm.reset(); // resets the entryForm once user clicks SAVE button
@@ -59,25 +60,23 @@ function userEntry(entryObject) {
   return $liElement;
 }
 
-// function DOMContentLoaded() {
-//   const entries = localStorage.getItem('JavaScriptLocalStorage');
-//   const previousData = JSON.parse(entries);
-//   if (previousData.entries.length > 0) {
-//     noEntries.classList.add('hidden');
-//     for (var i = 0; i < previousData.entries.length; i++) {
-//       var accessEntry = userEntry(previousData.entries[i]);
-//       entryLists.append(accessEntry);
-//     }
-//   }
-//   if (previousData.view === 'entryView') {
-//     entryFormFeature.classList.add('hidden');
-//     entryView.classList.remove('hidden');
-//   } else if (previousData.view === 'entry-form') {
-//     entryView.classList.add('hidden');
-//     entryFormFeature.classList.remove('hidden');
-//   }
-// }
-// window.addEventListener('DOMContentLoaded', DOMContentLoaded);
+function DOMContentLoaded() {
+  if (data.entries.length > 0) {
+    noEntries.classList.add('hidden');
+    for (var i = 0; i < data.entries.length; i++) {
+      var accessEntry = userEntry(data.entries[i]);
+      entryLists.append(accessEntry);
+    }
+  }
+  if (data.view === 'view-entries') {
+    entryFormFeature.classList.add('hidden');
+    entryView.classList.remove('hidden');
+  } else if (data.view === 'entry-form') {
+    entryView.classList.add('hidden');
+    entryFormFeature.classList.remove('hidden');
+  }
+}
+window.addEventListener('DOMContentLoaded', DOMContentLoaded);
 
 // Entries tab in the navbar should change the data-view to "entries"
 // make a function to swap class attributes of the data-view.
@@ -85,18 +84,13 @@ function userEntry(entryObject) {
 // add and event listener to entries in navbar
 entriesNavBar.addEventListener('click', function (event) {
   event.preventDefault();
-  var oldData = localStorage.getItem('JavaScriptLocalStorage');
-  oldData = JSON.parse(oldData);
+  data.view = 'view-entries';
   entryFormFeature.classList.add('hidden');
   entryView.classList.remove('hidden');
-  localStorage.setItem('JavaScriptLocalStorage', JSON.stringify({ ...oldData, view: 'entryView' }));
 });
 
 var newEntryButton = document.querySelector('.new-entry-button');
 newEntryButton.addEventListener('click', function (event) {
-  var oldData = localStorage.getItem('JavaScriptLocalStorage');
-  oldData = JSON.parse(oldData);
   entryView.classList.add('hidden');
   entryFormFeature.classList.remove('hidden');
-  localStorage.setItem('JavaScriptLocalStorage', JSON.stringify({ ...oldData, view: 'entry-form' }));
 });

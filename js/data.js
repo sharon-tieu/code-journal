@@ -9,10 +9,18 @@ var data = {
 
 window.addEventListener('beforeunload', function (event) {
   var entriesArray = JSON.stringify(data.entries);
+  var dataViewString = JSON.stringify(data.view);
   this.localStorage.setItem('code-journal-data', entriesArray);
+  this.localStorage.setItem('data-view', dataViewString);
 });
 
 var previousJournalEntries = localStorage.getItem('code-journal-data');
+var previousDataView = localStorage.getItem('data-view');
+
 if (previousJournalEntries !== null) {
-  data = JSON.parse;
+  data = {
+    ...data,
+    entries: JSON.parse(previousJournalEntries),
+    view: JSON.parse(previousDataView)
+  };
 }
