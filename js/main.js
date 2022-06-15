@@ -8,7 +8,10 @@ var entryFormFeature = document.querySelector('.entry-form-feature');
 var entriesNavBar = document.querySelector('.entries-navbar');
 var entryView = document.querySelector('.entry-view');
 var noEntries = document.querySelector('.no-entries');
+var viewEntries = document.querySelector('#view-entries');
+var $ul = document.querySelector('ul');
 
+// Function to change the value of the image source.
 photoUrl.addEventListener('input', function (event) {
   if (photoUrl.value === '') {
     imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
@@ -32,6 +35,20 @@ function newEntry(event) {
   data.nextEntryId++; // incrementing
   imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
   entryForm.reset(); // resets the entryForm once user clicks SAVE button
+  $ul.prepend(userEntry(data.entries[0]));
+  data.view = 'entry-form';
+  changeView();
+}
+
+// change view to view entries after submitting.
+function changeView() {
+  if (data.view === 'entry-form') {
+    entryFormFeature.classList.add('hidden');
+    viewEntries.classList.remove('hidden');
+  } else if (data.view === '') {
+    entryFormFeature.classList.remove('hidden');
+    viewEntries.classList.add('hidden');
+  }
 }
 
 // create a DOM tree for our html sample journal entry that will change/update with JavaScript.
@@ -68,13 +85,14 @@ function DOMContentLoaded() {
       entryLists.append(accessEntry);
     }
   }
-  if (data.view === 'view-entries') {
-    entryFormFeature.classList.add('hidden');
-    entryView.classList.remove('hidden');
-  } else if (data.view === 'entry-form') {
-    entryView.classList.add('hidden');
-    entryFormFeature.classList.remove('hidden');
-  }
+  changeView();
+  // if (data.view === 'view-entries') {
+  //   entryFormFeature.classList.add('hidden');
+  //   entryView.classList.remove('hidden');
+  // } else if (data.view === 'entry-form') {
+  //   entryView.classList.add('hidden');
+  //   entryFormFeature.classList.remove('hidden');
+  // }
 }
 window.addEventListener('DOMContentLoaded', DOMContentLoaded);
 
