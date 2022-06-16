@@ -27,6 +27,7 @@ function newEntry(event) {
   var photoURL = document.querySelector('.photo').value;
   var notes = document.querySelector('.textbox').value;
   var entryData = {
+    id: data.nextEntryId,
     title,
     photoURL,
     notes
@@ -55,6 +56,7 @@ function changeView() {
 function userEntry(entryObject) {
   var $liElement = document.createElement('li');
   $liElement.setAttribute('class', 'row');
+  $liElement.setAttribute('data-entry-id', entryObject.id);
 
   var $divFirstColumn = document.createElement('div');
   $divFirstColumn.setAttribute('class', 'column-half');
@@ -112,3 +114,9 @@ newEntryButton.addEventListener('click', function (event) {
   entryView.classList.add('hidden');
   entryFormFeature.classList.remove('hidden');
 });
+
+// style pencil icon
+// remake dom tree and prepend to <ul> in the 'submit' function
+// get information from each element--
+// data
+// be able to search data.entries id in local-storage to give the ability to choose what to edit
