@@ -7,16 +7,12 @@ var data = {
   nextEntryId: 1
 };
 
+var previousJournalEntries = localStorage.getItem('code-journal-entries');
+if (previousJournalEntries !== null) {
+  data = JSON.parse(previousJournalEntries);
+}
+
 window.addEventListener('beforeunload', function (event) {
-  var entriesArray = JSON.stringify(data.entries);
+  var entriesArray = JSON.stringify(data);
   localStorage.setItem('code-journal-entries', entriesArray);
 });
-
-var previousJournalEntries = localStorage.getItem('code-journal-entries');
-
-if (previousJournalEntries !== null) {
-  data = {
-    ...data,
-    entries: JSON.parse(previousJournalEntries)
-  };
-}
