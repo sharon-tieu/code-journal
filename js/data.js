@@ -7,11 +7,12 @@ var data = {
   nextEntryId: 1
 };
 
-window.addEventListener('beforeunload', function (event) {
-  var stringData = JSON.stringify(data);
-  localStorage.setItem('New data', stringData);
-});
-var previousData = localStorage.getItem('javascript-local-storage');
-if (previousData !== null) {
-  data.parse(previousData);
+var previousJournalEntries = localStorage.getItem('code-journal-entries');
+if (previousJournalEntries !== null) {
+  data = JSON.parse(previousJournalEntries);
 }
+
+window.addEventListener('beforeunload', function (event) {
+  var entriesArray = JSON.stringify(data);
+  localStorage.setItem('code-journal-entries', entriesArray);
+});
