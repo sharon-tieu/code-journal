@@ -34,7 +34,8 @@
       <div class="container">
         <div class="row">
           <div class="column-full">
-            <h1>New Entry</h1>
+            <h1 class="new-entry-heading">New Entry</h1>
+            <h1 class="hidden edit-entry-heading">Edit Entry</h1>
           </div>
         </div>
         <form class="entry-form">
@@ -42,7 +43,7 @@
             <div class="column-half">
               <img src="./images/placeholder-image-square.jpg" alt="place-holder" id="img-placeholder">
             </div>
-            <div class="column-half">
+            <div class="column-half padding">
               <label for="title">Title</label>
               <div>
                 <input required
@@ -73,8 +74,6 @@
         </form>
       </div>
     </div>
-
-
     <!-- User can view Entries-->
     <div data-view="view-entries" id="view-entries" class="hidden entry-view">
       <div class="container">
@@ -90,9 +89,9 @@
         <!-- DOM TREE BEGINS -->
         <div id="dummy-journal-entry">
           <ul class="entry-list">
-
             <!-- Dummy Entries for Feature 2-->
-            <!-- <li class="row">
+            <!--
+            <li class="row">
               <div class="column-half">
                 <img src="/images/github-ada-lovelace.webp">
               </div>
@@ -104,24 +103,34 @@
                   consequat.
                 </p>
               </div>
-            </li> -->
-
+            </li>
+            -->
             <!-- DUMMY FEATURE 3 -->
             <!-- <li class="row">
               <div class="column-half">
-                <img src="/images/github-ada-lovelace.webp">
+                <img src="./images/github-ada-lovelace.webp">
               </div>
-              <div class="column-half display-flex">
-                <div class="row">
-                  i am a title.
+              <div class="column-half"> -->
+              <!-- FEATURE 3 ADDITION -->
+              <!-- <div class="row space-between vertical-align">
+                  <div class="column-two-thirds padding">
+                    <h3>Entry Title</h3>
+                  </div>
+                  <div class="column-one-thirds align-right"> -->
+                    <!-- PENCIL ICON -->
+                    <!--<i class="edit-icon fas fa-pencil-alt fa-xl pencil-color"></i> -->
+                  <!-- </div>
                 </div>
                 <div class="row">
-                  i am another title
+                  <p class="padding">This is a dummy journal entry no.1. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                  </p>
                 </div>
               </div>
             </li> -->
             <!-- END OF FEATURE 3 -->
-
           </ul>
         </div>
       </div>
