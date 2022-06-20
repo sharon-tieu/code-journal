@@ -94,9 +94,23 @@ label {
 
 .vertical-align {
   align-items: center;
+  vertical-align: center;
 }
 
 .entries-navbar {
   padding: 20px;
   text-decoration: none;
+}
+
+/* FEATURE 3 STYLING */
+.pencil-color {
+  color: #562b81;
+}
+
+.padding {
+  padding-left: 10px;
+}
+
+.width-70 {
+  width: 70%;
 }
