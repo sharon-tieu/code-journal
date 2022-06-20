@@ -93,7 +93,9 @@ function changeView() {
 // ======== change view to edit entry function =====//
 var editEntryHeading = document.querySelector('.edit-entry-heading');
 var newEntryHeading = document.querySelector('.new-entry-heading');
+var deleteEntry = document.querySelector('.delete-entry');
 function editEntryView() {
+  deleteEntry.classList.remove('hidden');
   if (data.view === 'entry-form') {
     entryFormFeature.classList.add('hidden');
     editEntryHeading.classList.remove('hidden');
