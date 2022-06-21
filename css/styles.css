@@ -114,3 +114,58 @@ label {
 .width-70 {
   width: 70%;
 }
+
+.delete-entry {
+  text-decoration: underline;
+  color: #eb4f4d;
+}
+
+#modal-container {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background-color: rgb(51 51 51 / 86.3%);
+}
+
+#survey {
+  background-color: white;
+  margin-top: 15%;
+  margin-left: 35%;
+  margin-right: 35%;
+  font-size: 20px;
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  border-radius: 5px;
+}
+
+.modal-button {
+  font-size: 18px;
+  height: 40px;
+  width: 110px;
+}
+
+.border {
+  border-radius: 3px;
+  border: none;
+}
+
+.cancel-button {
+  background-color: #b6b6b6;
+  border: none;
+  font-weight: bold;
+}
+
+.confirm-button {
+  background-color: #dc2626;
+  color: white;
+  font-weight: bold;
+}
+
+/* FOR TESTING... */
+
+/* .red-border {
+  border: 1px solid red;
+} */

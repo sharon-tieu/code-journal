@@ -12,7 +12,6 @@ var noEntries = document.querySelector('.no-entries');
 var viewEntries = document.querySelector('#view-entries');
 var $ul = document.querySelector('ul');
 
-// Function to change the value of the image source.
 photoUrl.addEventListener('input', function (event) {
   if (photoUrl.value === '') {
     imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
@@ -33,10 +32,7 @@ function newEntry(event) {
   if (data.editing !== null) { // when in 'editing-mode', data.editing is = data.entries[i] :: not null.
     var elementToReplace = document.querySelectorAll('li');
     for (var i = 0; i < data.entries.length; i++) {
-      // console.log(data.entries[i].id);
-      // console.log(data.editing);
       if (data.entries[i].id === data.editing.id) {
-        // reassigning data.entries[i];
         data.entries[i] = {
           id: data.editing.id,
           title,
@@ -45,7 +41,6 @@ function newEntry(event) {
         };
       }
     }
-    // replace <li> with data.entries[i] by seeing if their id's match and then replace the values with the values of data.entries[i].
     for (i = 0; i < elementToReplace.length; i++) {
       if (Number(elementToReplace[i].getAttribute('data-entry-id')) === Number(data.editing.id)) {
         elementToReplace[i].replaceWith(userEntry({
@@ -56,9 +51,7 @@ function newEntry(event) {
         }));
       }
     }
-    // after editing, User clicks SAVE and User is out of editing mode now.
     data.editing = null;
-    // ELSE, User is making a new entry
   } else {
     var entryData = {
       id: data.nextEntryId,
@@ -79,7 +72,6 @@ function newEntry(event) {
   changeView();
 }
 
-// change view to view entries after submitting.
 function changeView() {
   if (data.view === 'entry-form') {
     entryFormFeature.classList.add('hidden');
@@ -90,12 +82,12 @@ function changeView() {
   }
 }
 
-// ======== change view to edit entry function =====//
 var editEntryHeading = document.querySelector('.edit-entry-heading');
 var newEntryHeading = document.querySelector('.new-entry-heading');
-var deleteEntry = document.querySelector('.delete-entry');
+var deleteAnEntry = document.querySelector('.delete-entry');
+
 function editEntryView() {
-  deleteEntry.classList.remove('hidden');
+  deleteAnEntry.classList.remove('hidden');
   if (data.view === 'entry-form') {
     entryFormFeature.classList.add('hidden');
     editEntryHeading.classList.remove('hidden');
@@ -107,9 +99,12 @@ function editEntryView() {
   }
 }
 
-// ======= ======= ======= ======= =======//
+var modalContainer = document.querySelector('#modal-container');
 
-// create a DOM tree for our html sample journal entry that will change/update with JavaScript.
+deleteAnEntry.addEventListener('click', function () {
+  modalContainer.classList.remove('hidden');
+});
+
 function userEntry(entryObject) {
   var $liElement = document.createElement('li');
   $liElement.setAttribute('class', 'row');
@@ -139,8 +134,6 @@ function userEntry(entryObject) {
 
   var $hThree = document.createElement('h3');
   $hThree.textContent = entryObject.title;
-  // MIGHT HAVE TO CHANGE WHERE THIS IS APPENDING TO//
-  // $divSecondColumn.appendChild($hThree);
   $featureThreeColumnOne.appendChild($hThree);
 
   // ============== FEATURE 3 BEGINS HERE ==============//
@@ -156,10 +149,6 @@ function userEntry(entryObject) {
   // ============== EDITING FUNCTION ====================//
   $pencilIcon.addEventListener('click', function () {
     editEntryView();
-    // console.log(Number(event.target.closest('li').getAttribute('data-entry-id')));
-    // console.log('data.entries:', data.entries);
-    // console.log('entryObject.id:', parseInt(entryObject.id));
-
     var editTitle = document.querySelector('#title');
     var editPhotoUrl = document.querySelector('#photo');
     var editPhoto = document.querySelector('#img-placeholder');
@@ -175,7 +164,6 @@ function userEntry(entryObject) {
       }
     }
   });
-  // ============== =============== ====================//
 
   var $featureThreeRowTwo = document.createElement('div');
   $featureThreeRowTwo.setAttribute('class', 'row');
@@ -185,7 +173,6 @@ function userEntry(entryObject) {
   var $pContent = document.createElement('p');
   $pContent.setAttribute('class', 'padding');
   $pContent.textContent = entryObject.notes;
-  // $divSecondColumn.appendChild($pContent);
   $featureThreeRowTwo.appendChild($pContent);
   return $liElement;
 }
@@ -202,10 +189,6 @@ function DOMContentLoaded() {
 }
 window.addEventListener('DOMContentLoaded', DOMContentLoaded);
 
-// Entries tab in the navbar should change the data-view to "entries"
-// make a function to swap class attributes of the data-view.
-// make a queryselector for entries in navbar
-// add and event listener to entries in navbar
 entriesNavBar.addEventListener('click', function (event) {
   event.preventDefault();
   entryForm.reset();
@@ -221,8 +204,5 @@ newEntryButton.addEventListener('click', function (event) {
   entryFormFeature.classList.remove('hidden');
   newEntryHeading.classList.remove('hidden');
   editEntryHeading.classList.add('hidden');
+  deleteAnEntry.classList.add('hidden');
 });
-
-// get information from each element--
-// data
-// be able to search data.entries id in local-storage to give the ability to choose what to edit
