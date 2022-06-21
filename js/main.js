@@ -1,5 +1,4 @@
 /* global data */
-// Listen for 'input' events on the photoURL input. This will help update the src attribute of the photo preview when the input value changes.
 var photoUrl = document.querySelector('.photo');
 var imgSrc = document.querySelector('#img-placeholder');
 var editPhoto = document.querySelector('#img-placeholder');
@@ -74,6 +73,7 @@ function newEntry(event) {
 
 function changeView() {
   if (data.view === 'entry-form') {
+    data.view = 'entry-form';
     entryFormFeature.classList.add('hidden');
     viewEntries.classList.remove('hidden');
   } else if (data.view === 'view-entries') {
@@ -88,7 +88,7 @@ var deleteAnEntry = document.querySelector('.delete-entry');
 
 function editEntryView() {
   deleteAnEntry.classList.remove('hidden');
-  if (data.view === 'entry-form') {
+  if (data.view === 'entry-form' && modalContainer.classList.add('hidden')) {
     entryFormFeature.classList.add('hidden');
     editEntryHeading.classList.remove('hidden');
   } else if (data.view === 'view-entries') {
@@ -98,12 +98,6 @@ function editEntryView() {
     editEntryHeading.classList.remove('hidden');
   }
 }
-
-var modalContainer = document.querySelector('#modal-container');
-
-deleteAnEntry.addEventListener('click', function () {
-  modalContainer.classList.remove('hidden');
-});
 
 function userEntry(entryObject) {
   var $liElement = document.createElement('li');
@@ -168,7 +162,6 @@ function userEntry(entryObject) {
   var $featureThreeRowTwo = document.createElement('div');
   $featureThreeRowTwo.setAttribute('class', 'row');
   $divSecondColumn.appendChild($featureThreeRowTwo);
-  // ============== END ==============//
 
   var $pContent = document.createElement('p');
   $pContent.setAttribute('class', 'padding');
@@ -198,11 +191,24 @@ entriesNavBar.addEventListener('click', function (event) {
   entryView.classList.remove('hidden');
 });
 
+var modalContainer = document.querySelector('#modal-container');
 var newEntryButton = document.querySelector('.new-entry-button');
 newEntryButton.addEventListener('click', function (event) {
+  entryForm.reset();
+  imgSrc.setAttribute('src', './images/placeholder-image-square.jpg');
   entryView.classList.add('hidden');
   entryFormFeature.classList.remove('hidden');
   newEntryHeading.classList.remove('hidden');
   editEntryHeading.classList.add('hidden');
   deleteAnEntry.classList.add('hidden');
+  modalContainer.classList.add('hidden');
+});
+
+deleteAnEntry.addEventListener('click', function () {
+  modalContainer.classList.remove('hidden');
+});
+
+var cancelButton = document.querySelector('#do-not-delete');
+cancelButton.addEventListener('click', function () {
+  modalContainer.classList.add('hidden');
 });
