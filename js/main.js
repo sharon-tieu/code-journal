@@ -1,4 +1,3 @@
-/* global data */
 var photoUrl = document.querySelector('.photo');
 var imgSrc = document.querySelector('#img-placeholder');
 var editPhoto = document.querySelector('#img-placeholder');
@@ -210,5 +209,11 @@ deleteAnEntry.addEventListener('click', function () {
 
 var cancelButton = document.querySelector('#do-not-delete');
 cancelButton.addEventListener('click', function () {
+  event.preventDefault();
   modalContainer.classList.add('hidden');
+});
+
+var confirmButton = document.querySelector('.confirm-button');
+confirmButton.addEventListener('click', function () {
+
 });
