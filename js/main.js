@@ -115,7 +115,6 @@ function userEntry(entryObject) {
   $divSecondColumn.setAttribute('class', 'column-half');
   $liElement.appendChild($divSecondColumn);
 
-  // ============== FEATURE 3 BEGINS HERE ==============//
   var $featureThreeRowOne = document.createElement('div');
   $featureThreeRowOne.setAttribute('class', 'row space-between vertical-align');
   $divSecondColumn.appendChild($featureThreeRowOne);
@@ -123,13 +122,11 @@ function userEntry(entryObject) {
   var $featureThreeColumnOne = document.createElement('div');
   $featureThreeColumnOne.setAttribute('class', 'column-two-thirds padding');
   $featureThreeRowOne.appendChild($featureThreeColumnOne);
-  // ============== END ==============//
 
   var $hThree = document.createElement('h3');
   $hThree.textContent = entryObject.title;
   $featureThreeColumnOne.appendChild($hThree);
 
-  // ============== FEATURE 3 BEGINS HERE ==============//
   var $featureThreeColumnTwo = document.createElement('div');
   $featureThreeColumnTwo.setAttribute('class', 'column-one-thirds align-right');
   $featureThreeRowOne.appendChild($featureThreeColumnTwo);
@@ -215,5 +212,19 @@ cancelButton.addEventListener('click', function () {
 
 var confirmButton = document.querySelector('.confirm-button');
 confirmButton.addEventListener('click', function () {
-
+  var editTitle = document.querySelector('#title');
+  var editPhotoUrl = document.querySelector('#photo');
+  var editPhoto = document.querySelector('#img-placeholder');
+  var editNotes = document.querySelector('#notes');
+  var objectId = Number(event.target.closest('li').getAttribute('data-entry-id'));
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].id === objectId) {
+      data.editing = data.entries[i];
+      editTitle.value = data.entries[i].title;
+      editPhotoUrl.value = data.entries[i].photoURL;
+      editPhoto.src = data.entries[i].photoURL;
+      editNotes.value = data.entries[i].notes;
+    }
+  }
+  data.remove(data.entries[i]);
 });
