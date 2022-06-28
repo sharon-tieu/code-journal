@@ -9,6 +9,7 @@ var entryView = document.querySelector('.entry-view');
 var noEntries = document.querySelector('.no-entries');
 var viewEntries = document.querySelector('#view-entries');
 var $ul = document.querySelector('ul');
+var deleteEntry = document.querySelector('.delete-entry');
 
 photoUrl.addEventListener('input', function (event) {
   if (photoUrl.value === '') {
@@ -144,6 +145,7 @@ function userEntry(entryObject) {
     var editPhoto = document.querySelector('#img-placeholder');
     var editNotes = document.querySelector('#notes');
     var objectId = Number(event.target.closest('li').getAttribute('data-entry-id'));
+    deleteEntry.setAttribute('data-entry-id', objectId);
     for (var i = 0; i < data.entries.length; i++) {
       if (data.entries[i].id === objectId) {
         data.editing = data.entries[i];
@@ -212,19 +214,10 @@ cancelButton.addEventListener('click', function () {
 
 var confirmButton = document.querySelector('.confirm-button');
 confirmButton.addEventListener('click', function () {
-  var editTitle = document.querySelector('#title');
-  var editPhotoUrl = document.querySelector('#photo');
-  var editPhoto = document.querySelector('#img-placeholder');
-  var editNotes = document.querySelector('#notes');
-  var objectId = Number(event.target.closest('li').getAttribute('data-entry-id'));
+  var objectId = Number(deleteEntry.getAttribute('data-entry-id'));
   for (var i = 0; i < data.entries.length; i++) {
     if (data.entries[i].id === objectId) {
-      data.editing = data.entries[i];
-      editTitle.value = data.entries[i].title;
-      editPhotoUrl.value = data.entries[i].photoURL;
-      editPhoto.src = data.entries[i].photoURL;
-      editNotes.value = data.entries[i].notes;
+      data.entries = data.entries.filter(el => el.id !== objectId);
     }
   }
-  data.remove(data.entries[i]);
 });
